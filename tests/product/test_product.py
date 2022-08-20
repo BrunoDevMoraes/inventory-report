@@ -2,7 +2,14 @@ from inventory_report.inventory.product import Product
 
 
 def test_cria_produto():
-    product = Product(100, 'Batata', 'BatataCompany', '01/02', '01/03', '0MB99', 'Guardar em temperatura ambiente')
+    product = Product(
+        100,
+        'Batata',
+        'BatataCompany',
+        '01/02',
+        '01/03', '0MB99',
+        'Guardar'
+    )
 
     assert type(product.id) == int
     assert product.id == 100
@@ -23,4 +30,4 @@ def test_cria_produto():
     assert product.numero_de_serie == '0MB99'
 
     assert type(product.instrucoes_de_armazenamento) == str
-    assert product.instrucoes_de_armazenamento == 'Guardar em temperatura ambiente'
+    assert product.instrucoes_de_armazenamento == 'Guardar'
