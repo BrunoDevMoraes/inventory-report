@@ -1,4 +1,4 @@
-from simple_report import SimpleReport
+from inventory_report.reports.simple_report import SimpleReport
 
 
 class CompleteReport():
@@ -8,9 +8,9 @@ class CompleteReport():
             products_list)[0]
         companies_report = ''
         for key in companies_products:
-            companies_report += f"\n- {key}: {companies_products[key]}"
+            companies_report += f"- {key}: {companies_products[key]}\n"
         return (
             f"{SimpleReport.generate(products_list)}\n"
-            f"Produtos estocados por empresa:"
+            f"Produtos estocados por empresa:\n"
             f"{companies_report}"
         )
