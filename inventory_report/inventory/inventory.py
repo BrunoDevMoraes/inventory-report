@@ -16,9 +16,9 @@ class Inventory:
             if path.lower().endswith('.json'):
                 file_data = json.load(file)
                 return [row for row in file_data]
-            if path.lower().endswith('.xml'):
-                file_data = xmltodict.parse(file.read())
-                return [row for row in file_data["dataset"]["record"]]
+            # if path.lower().endswith('.xml'):
+            #     file_data = xmltodict.parse(file.read())
+            #     return [row for row in file_data["dataset"]["record"]]
 
     @staticmethod
     def import_data(path: str, type: str) -> str:
