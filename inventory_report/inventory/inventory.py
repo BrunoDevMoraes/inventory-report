@@ -6,7 +6,7 @@ import json
 
 class Inventory:
     @staticmethod
-    def import_data(path: str, type: str) -> str:
+    def read_file(path):
         with open(path, 'r') as file:
             file_data = dict()
             if path.lower().endswith('.csv'):
@@ -15,8 +15,12 @@ class Inventory:
                 file_data = json.load(file)
             if path.lower().endswith('.xml'):
                 file_data = csv.DictReader(file)
-            data_list = [row for row in file_data]
-            if type == "simples":
-                return SimpleReport.generate(data_list)
-            if type == "completo":
-                return CompleteReport.generate(data_list)
+            return [row for row in file_data]
+
+    @staticmethod
+    def import_data(path: str, type: str) -> str:
+        data_list = Inventory.read_file(path)
+        if type == "simples":
+            return SimpleReport.generate(data_list)
+        if type == "completo":
+            return CompleteReport.generate(data_list)
