@@ -18,7 +18,6 @@ class Inventory:
                 return [row for row in file_data]
             if path.lower().endswith('.xml'):
                 file_data = xmltodict.parse(file.read())
-                print(file_data)
                 return [row for row in file_data["dataset"]["record"]]
 
     @staticmethod
