@@ -2,10 +2,15 @@ from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 import csv
 import json
-# import xmltodict
+import xmltodict
 
 
 class Inventory:
+    @staticmethod
+    def read_xml_file(file):
+        file_data = xmltodict.parse(file.read())
+        return [row for row in file_data["dataset"]["record"]]
+
     @staticmethod
     def read_file(path):
         with open(path, 'r') as file:
@@ -16,9 +21,8 @@ class Inventory:
             if path.lower().endswith('.json'):
                 file_data = json.load(file)
                 return [row for row in file_data]
-            # if path.lower().endswith('.xml'):
-            #     file_data = xmltodict.parse(file.read())
-            #     return [row for row in file_data["dataset"]["record"]]
+            else:
+                return Inventory.read_xml_file(file)
 
     @staticmethod
     def import_data(path: str, type: str) -> str:
