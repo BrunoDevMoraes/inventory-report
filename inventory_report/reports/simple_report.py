@@ -18,7 +18,7 @@ class SimpleReport:
                 highest_amount = products_per_company[key]
                 company_with_most_products = key
 
-        return company_with_most_products
+        return [products_per_company, company_with_most_products]
 
     @staticmethod
     def get_oldest_date(products_list):
@@ -51,7 +51,7 @@ class SimpleReport:
     def generate(products_list):
         oldest_date = SimpleReport.get_oldest_date(products_list)
         closest_date = SimpleReport.get_closest_future_date(products_list)
-        company = SimpleReport.get_company_with_most_products(products_list)
+        company = SimpleReport.get_company_with_most_products(products_list)[1]
         return (
             "Data de fabricação mais antiga: {}\n"
             "Data de validade mais próxima: {}\n"
